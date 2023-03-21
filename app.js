@@ -1,3 +1,4 @@
+let score = 0;
 // Get the game choices buttons and the result element
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
@@ -39,11 +40,13 @@ function playGame(userChoice) {
 		(userChoice === 'paper' && computerChoice === 'rock') ||
 		(userChoice === 'scissors' && computerChoice === 'paper')
 	) {
-		result = 'You Win!';
+		score += 1;
+		result = `You Win! Score: ${score}`;
 	} else if (userChoice === computerChoice) {
-		result = 'Tie!';
+		result = `Tie! Score: ${score}`;
 	} else {
-		result = 'Computer Wins!';
+		score -= 1;
+		result = `Computer Wins! Score: ${score}`;
 	}
 
 	// Show the result and play again button
@@ -55,4 +58,16 @@ function playGame(userChoice) {
 const playAgainBtn = document.querySelector('.play-again');
 playAgainBtn.addEventListener('click', () => {
 	resultEl.parentElement.style.display = 'none';
+	score = 0;
 });
+
+/*Add validation
+Create a username input field and use the username the player inputs in the game so that a player can see their name on the page when looking at where the scores are displayed.
+
+To make it more uniform, restrict the number of characters a username can be to 10 or fewer.
+
+This will be deemed as complete when the users cannot enter a username longer than 10 characters.
+
+🌟 BONUS: Make it so that valid usernames should only start with letters, not numbers or symbols.
+🌟 EXTRA BONUS: Make it so that the first letter of the username should be capitalised.
+*/
