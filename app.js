@@ -1,4 +1,4 @@
-/*Add validation
+/* Bonus (to do) - Add validation
 Create a username input field and use the username the player inputs in the game so that a player can see their name on the page when looking at where the scores are displayed.
 
 To make it more uniform, restrict the number of characters a username can be to 10 or fewer.
@@ -8,6 +8,7 @@ This will be deemed as complete when the users cannot enter a username longer th
 🌟 BONUS: Make it so that valid usernames should only start with letters, not numbers or symbols.
 🌟 EXTRA BONUS: Make it so that the first letter of the username should be capitalised.
 */
+
 let isStarted = false;
 let userScore = 0;
 let compScore = 0;
@@ -18,18 +19,8 @@ const showCompScore = document.querySelector('#score-b');
 const username = document.querySelector('input');
 const startGame = document.querySelector('.start');
 
-// validate username
-const setUserName = () => {
-	if (!player.textContent.match(/^[A-Z][a-z]{1,9}$/)) {
-		alert(
-			'username must start with a capital letter and be maximum 10 letters long'
-		);
-		player.textContent = `User`;
-	} else {
-		player.textContent = username.value;
-	}
-};
-
+// set username
+const setUserName = () => (player.textContent = username.value);
 startGame.addEventListener('click', setUserName);
 
 // Get the game choices buttons and the result element
