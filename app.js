@@ -16,12 +16,30 @@ let compScore = 0;
 const player = document.querySelector('h2');
 const showUserScore = document.querySelector('#score-a');
 const showCompScore = document.querySelector('#score-b');
-const username = document.querySelector('input');
-const startGame = document.querySelector('.start');
 
-// set username
-const setUserName = () => (player.textContent = username.value);
-startGame.addEventListener('click', setUserName);
+// Get the username input element
+const usernameInput = document.querySelector('#username');
+
+// Get the start button element
+const startButton = document.querySelector('.start');
+
+// Add an event listener to the start button
+startButton.addEventListener('click', () => {
+	// Get the username entered by the user
+	const username = usernameInput.value.trim();
+
+	// Check if the username is valid
+	if (/^[A-Z][a-z]{1,9}$/.test(username)) {
+		// The username is valid, so start the game
+		alert(`Welcome, ${username}! Let's start the game.`);
+		player.textContent = `${username}`;
+	} else {
+		// The username is invalid, so display an error message
+		alert(
+			'Please enter a valid username (2-10 letters, starting with a capital letter).'
+		);
+	}
+});
 
 // Get the game choices buttons and the result element
 const rockBtn = document.querySelector('.rock');
